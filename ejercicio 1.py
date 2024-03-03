@@ -60,12 +60,11 @@ class Sistema:
         self.__dic_nombre_pacientes[name_] = pac
         return True
 
-    def verDatosPaciente(self,c):
-        if self.verificarPac(c) == False:
+    def verDatosPaciente(self, c):
+        if c not in self.__dic_cedula_pacientes:
             return None
-        for p in self.__lista_pacientes:
-            if c == p.verCedula():
-                return p
+        return self.__dic_cedula_pacientes[c]
+
     def verNumeroPacientes(self):
         # print("Enel sistema hay: " + str(len(self.__lista_pacientes)) + " pacientes")
         return len(self.__lista_pacientes)
