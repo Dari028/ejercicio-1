@@ -33,14 +33,14 @@ class Sistema:
             pass
       
    
-    def buscar_paciente_ced(diccionario, clave):
+    def buscar_paciente_ced(self, clave):
         encontrado= False
         if clave in self.__dict_pacientes_ced:
             encontrado=True
             return 
         else:
             return encontrado
-    def buscar_paciente_nom(diccionario, clave):
+    def buscar_paciente_nom(self, clave):
         encontrado= False
         if clave in self.__dict_pacientes_nom:
             encontrado=True
@@ -49,9 +49,15 @@ class Sistema:
             return encontrado
 
     def ingresarPaciente(self,pac):
-        if self.verificarPac(pac.verCedula()):
+       
+        id_ = pac.verCedula()
+        name_ = pac.verNombre()
+
+        if id_ in self.__dic_cedula_pacientes:
             return False
-        self.__lista_pacientes.append(pac)
+        
+        self.__dic_cedula_pacientes[id_] = pac
+        self.__dic_nombre_pacientes[name_] = pac
         return True
 
     def verDatosPaciente(self,c):
