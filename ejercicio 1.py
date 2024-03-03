@@ -1,7 +1,7 @@
 class Paciente:
     def __init__(self):
-        self.__nombre = "juanita"
-        self.__cedula = int
+        self.__nombre = ""
+        self.__cedula = 0
         self.__genero = ""
         self.__servicio = ""
         
@@ -25,7 +25,7 @@ class Paciente:
 
 class Sistema:
     def __init__(self):
-        self.__lista_pacientes = []
+        self.__lista_pacientes = {}
       
     def eliminarPaciente(self,c):
         if self.verDatosPaciente(c):
@@ -76,7 +76,7 @@ def main():
             pac.asignarGenero(genero)
             pac.asignarServicio(servicio)
             r = sis2.ingresarPaciente(pac)
-            # 3 se almacena en la lista que esta dentro de la clase sistema
+            # 3 se almacena en el diccionario que esta dentro de la clase sistema
 
             if r == True:
                 print("paciente ingresado")
