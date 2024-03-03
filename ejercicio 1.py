@@ -53,12 +53,15 @@ class Sistema:
         id_ = pac.verCedula()
         name_ = pac.verNombre()
 
-        if id_ in self.__dic_cedula_pacientes:
+        if id_ in self.__dict_pacientes_ced:
             return False
-        
-        self.__dic_cedula_pacientes[id_] = pac
-        self.__dic_nombre_pacientes[name_] = pac
+        elif name_ in self.__dict_pacientes_nom:
+            return False
+            
+        self.__dict_pacientes_ced[id_] = pac
+        self.__dict_pacientes_nom[name_] = pac
         return True
+
 
     def verDatosPaciente(self, c):
         if c not in self.__dic_cedula_pacientes:
