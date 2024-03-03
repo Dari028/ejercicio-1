@@ -67,7 +67,7 @@ class Sistema:
 
     def verNumeroPacientes(self):
         # print("Enel sistema hay: " + str(len(self.__lista_pacientes)) + " pacientes")
-        return len(self.__lista_pacientes)
+        return len(self.__dict_pacientes_ced)
         
 def main():
     sis = Sistema()
