@@ -25,19 +25,28 @@ class Paciente:
 
 class Sistema:
     def __init__(self):
-        self.__lista_pacientes = {}
+        self.__dict_pacientes_ced = {}
+        self.__dict_pacientes_nom = {}
       
     def eliminarPaciente(self,c):
         if self.verDatosPaciente(c):
             pass
       
-    def verificarPac(self,ced):
-        encontrado =  False
-        for p in self.__lista_pacientes:
-            if ced == p.verCedula():
-                encontrado = True
-                break
-        return encontrado
+   
+    def buscar_paciente_ced(diccionario, clave):
+        encontrado= False
+        if clave in self.__dict_pacientes_ced:
+            encontrado=True
+            return 
+        else:
+            return encontrado
+    def buscar_paciente_nom(diccionario, clave):
+        encontrado= False
+        if clave in self.__dict_pacientes_nom:
+            encontrado=True
+            return 
+        else:
+            return encontrado
 
     def ingresarPaciente(self,pac):
         if self.verificarPac(pac.verCedula()):
