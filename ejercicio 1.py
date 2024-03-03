@@ -27,21 +27,23 @@ class Sistema:
     def __init__(self):
         self.__dict_pacientes_ced = {}
         self.__dict_pacientes_nom = {}
+        self.__NumeroPacientes=len(self.__dict_pacientes_nom)
          
-    def buscar_paciente_ced(self, clave):
-        encontrado= False
-        if clave in self.__dict_pacientes_ced:
-            encontrado=True
-            return encontrado
-        else:
-            return encontrado
-    def buscar_paciente_nom(self, clave):
-        encontrado= False
-        if clave in self.__dict_pacientes_nom:
-            encontrado=True
-            return 
-        else:
-            return encontrado
+    def buscar_paciente_ced(self, c):
+        
+        if c in self.__dict_pacientes_ced:
+            return True
+        else:  
+            return False
+    def buscar_paciente_nom(self, c):
+        
+        if c in self.__dict_pacientes_nom:
+            return True
+        else:  
+            return False
+
+    
+
 
     def ingresarPaciente(self,pac):
        
@@ -70,13 +72,19 @@ class Sistema:
 
     def verNumeroPacientes(self):
         # print("Enel sistema hay: " + str(len(self.__lista_pacientes)) + " pacientes")
-        return len(self.__dict_pacientes_ced)
-        
+        return self.__NumeroPacientes
+    def imprimir_diccionarios(self):
+        print("Diccionario de pacientes por cedula:")
+        print(self.__dict_pacientes_ced)
+        print("Diccionario de pacientes por nombre:")
+        print(self.__dict_pacientes_nom)
+sis = Sistema()
+sis1 = Sistema()
+sis2 = Sistema()
 def main():
-    sis = Sistema()
-    sis1 = Sistema()
-    sis2 = Sistema()
+    
     while True:
+        print(sis2.imprimir_diccionarios())
         opcion = int(input("Ingrese 0 para volver al menu, 1 para ingresar nuevo paciente, 2 ver paciente: , 3 - ver cantidad de pacientes "))
         if opcion == 1:
             print("A continuacion se solicitaran los seguientes datos:")
@@ -97,30 +105,30 @@ def main():
 
             if r == True:
                 print("paciente ingresado")
+                print(sis2.imprimir_diccionarios())
             else:
                 print("paciente ya existe en el sistema")
 
         elif opcion == 2:
-             cn = input("Ingrese la cedula o el nombre del paciente a buscar: ")
-            try:
-                cn = int(cn)
-            except ValueError:
-                pass
-            sis=Sistema
-            if sis.verDatosPaciente(cn):
-                p = sis.verDatosPaciente(cn)
+        
+            cn = input("Ingrese la cedula o el nombre del paciente a buscar: ")
+            if sis2.buscar_paciente_ced(cn)==True:
+                p = sis2.verDatosPaciente(cn)
                 print("Nombre: " + p.verNombre())
                 print("Cedula: " + str(p.verCedula()))
                 print("Genero: " + p.verGenero())
                 print("Servicio: " + p.verServicio())
-            elif sis.buscar_paciente_nom(cn):
-                p = sis.verDatosPaciente(cn)
+            elif sis2.buscar_paciente_nom(cn)== True:
+                p = sis2.verDatosPaciente(cn)
                 print("Nombre: " + p.verNombre())
                 print("Cedula: " + str(p.verCedula()))
                 print("Genero: " + p.verGenero())
                 print("Servicio: " + p.verServicio())
             else:
                 print("El paciente no se encontró")
+                print(cn)
+                print(sis.buscar_paciente_nom(cn))
+                print(sis.buscar_paciente_ced(cn))
         
         elif opcion == 3:
             print(f"la cantidad de pacientes en el sistema es: {sis.verNumeroPacientes()}")
